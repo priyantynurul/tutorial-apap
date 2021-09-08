@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7ff96b7-ae89-4f34-a00b-914efd5c6f0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +14,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="1xqrCFqGVyNlHWwM5SNA8UTPgTU" />
   <component name="ProjectViewState">
@@ -42,7 +50,7 @@
       <workItem from="1631093333726" duration="1283000" />
       <workItem from="1631095119742" duration="31000" />
       <workItem from="1631100000688" duration="639000" />
-      <workItem from="1631102486027" duration="76000" />
+      <workItem from="1631102486027" duration="171000" />
     </task>
     <servers />
   </component>

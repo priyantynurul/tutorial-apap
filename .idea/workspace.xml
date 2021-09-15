@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7ff96b7-ae89-4f34-a00b-914efd5c6f0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,7 +32,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/IsPalindrome" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -50,7 +50,9 @@
       <workItem from="1631093333726" duration="1283000" />
       <workItem from="1631095119742" duration="31000" />
       <workItem from="1631100000688" duration="639000" />
-      <workItem from="1631102486027" duration="171000" />
+      <workItem from="1631102486027" duration="1603000" />
+      <workItem from="1631113820112" duration="19000" />
+      <workItem from="1631113951059" duration="28000" />
     </task>
     <servers />
   </component>

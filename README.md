@@ -3,6 +3,66 @@
 * **Priyanty Nurul Fatimah** - *1906353681* - *C*
 
 ---
+## Tutorial 2
+### What I have learned today
+
+Pertanyaan 1: Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link
+berikut:
+http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20
+APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi
+
+=> Yang terjadi adalah muncul WhiteLabel Error Page karena pada controller 
+=> kita mengarahkan path /bioskop/add untuk membuka template file addbioskop
+=> sedangkan ketika mengikuti tutorial pada saat itu kita belum membuat file
+=> tersebut, sehingga sistem tidak bisa memunculkan view untuk path tersebut 
+
+Pertanyaan 2: Menurut kamu anotasi @Autowired pada class Controller tersebut
+merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja
+@Autowired tersebut dalam konteks service dan controller yang telah kamu buat
+
+=> Menurut saya anotasi @Autowired pada class Controller merupakan implementasi
+=> dari konsep domain model; Di mana, konsepnya adalah instead of membuat secara
+=> runut untuk setiap kegiatan (transaksi) yang ingin dilakukan @Autowired menghubungkan
+=> fungsi-fungsi tersebut dengan menempatkan sebuah instance dari satu bean ke dalam field
+=> yang diinginkan ke dalam sebuah instance dari bean lain. 
+=> intinya mempass object/instance hohhoh
+
+Pertanyaan 3: Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link
+berikut:
+http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20
+APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx 
+Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi
+
+=> Yang terjadi adalah kembali muncul WhiteLabel Error Page di mana kali ini 
+=> hal tersebut disebabkan oleh kurangnya parameter yang wajib diberikan pada 
+=> link yaitu parameter jumlahStudio (kita menetapkan status required pada parameter
+=> tersebut)
+
+Pertanyaan 4: Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung,
+link apa yang harus diakses?
+
+=> Link yang harus diakses adalah menggunakan path /bioskop/view dengan 
+=> parameter idBioskop atas nama Bioskop Maung
+=> contoh: Bioskop Maung memiliki idBioskop = 2; maka link yang harus diakses
+=> adalah http://localhost:8080/bioskop/view?idBioskop=2
+
+Pertanyaan 5: Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk
+mengakses http://localhost:8080/bioskop/viewall , apa yang akan ditampilkan? Sertakan
+juga bukti screenshotmu.
+
+=> Yang ditampilkan adalah seluruh bioskop yang ditambahkan pada suatu session
+=> Berikut adalah hasil ss yang saya lakukan (akan saya masukkan langsung lewat github 
+=> atau bisa dicek di dalam folder cineplux ini ^-^)
+
+### What I did not understand
+(tuliskan apa saja yang kurang Anda mengerti, Anda dapat men-_check_ apabila Anda
+sudah mengerti dikemudian hari, dan tambahkan tulisan yang membuat Anda mengerti)
+Quite much actually
+- [ ] Sudah cukuo mengerti flow-nya ^-^ senang.. hanya saja masih sangat perlu mengulang
+- [ ] Materi perkuliahan hari ini agak membingung T^T tapi tidapaa.. nanti kubaca2 lagi
+
+---
 ## Tutorial 1
 ### What I have learned today
 (Masukkan pertanyaan yang diikuti jawaban di setiap nomor, contoh seperti dibawah. Anda

@@ -51,7 +51,7 @@ public class BioskopServiceImpl implements BioskopService{
 
     @Override
     public boolean isDijaga(BioskopModel bioskop) {
-        if(bioskop.getListPenjaga().isEmpty()){return true;}
-        else{return false;}
+        if(bioskop.getListPenjaga().isEmpty()){return false;}
+        else{return true;}
     }
 }

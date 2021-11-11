@@ -2,6 +2,136 @@
 ## Authors
 * **Priyanty Nurul Fatimah** - *1906353681* - *C*
 
+## Tutorial 5
+### What I have learned today
+1. Apa itu Postman? Apa kegunaannya?
+Postman adalah aplikasi antarmuka untuk melakukan API testing. Gunanya adalah 
+untuk menguji request HTTP di mana setelah melakukan request kita akan 
+mendapat berbagai jenis response sebagai validasi. Jadi kita dapat 
+memvalidasi respon tanpa harus membangun suatu halaman website yang utuh.
+
+2. Jelaskan fungsi dari anotasi @JsonIgnoreProperties dan @JsonProperty.
+@JsonIgnoreProperties adalah anotasi yang digunakan untuk mengabaikan suatu 
+properti logis tertentu yang ditentukan dalam serialisasi dan deserialisasi JSON.
+
+@JsonProperty adalah anotasi untuk menandai bahwa suatu properti merupakan suatu JsonProperty
+dan bisa diberikan nama properti dalam tanda kurung yang menyertai anotasi
+
+3. Apa kegunaan atribut WebClient?
+WebClient adalah interface yang merepresentasikan titik masuk utama untuk 
+melakukan request pada web
+
+4. Apa itu ResponseEntity dan BindingResult? Apa kegunaannya?
+ResponseEntity adalah objek untuk merepresentasikan keseluruhan HTTP response.
+Kita bisa mengontrol segala hal yang masuk ke objek tersebut: status code, 
+header, and body.
+
+BindingResult adalah objek Spring yang digunakan untuk menampung hasil dari 
+validasi dan binding serta berisi error yang mungkin saja terjadi. Objek 
+tersebut harus muncul setelah validasi suatu objek, apabila tidak maka Spring
+akan gagal untuk memvalidasi objek tersebut dan mengeluarkan exception.
+
+Source:
+https://www.encora.com/insights/what-is-postman-api-test#:~:text=Postman%20is%20an%20application%20used,need%20to%20be%20subsequently%20validated.
+https://www.concretepage.com/jackson-api/jackson-jsonignore-jsonignoreproperties-and-jsonignoretype
+https://www.baeldung.com/spring-5-webclient
+https://stackoverflow.com/questions/10413886/what-is-the-use-of-bindingresult-interface-in-spring-mvc/36715053
+
+
+---
+## Tutorial 3
+### What I have learned today
+
+1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model
+(@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
+
+@AllArgsConstructor : anotasi ini berfungsi untuk menghasilkan konstruktor 
+dengan argumen berupa setiap field pada kelas yang diberikan anotasi.
+
+@NoArgsConstructor : anotasi ini menghasilkan konstruktor tanpa parameter untuk
+kelas yang diberikan anotasi
+
+@Setter : anotasi ini akan membuatkan setter function secara otomatis untuk setiap
+atribut pada kelas yang dianotasi
+
+@Getter : anotasi ini akan membuatkan getter function secara otomatis untuk setiap
+atribut pada kelas yang dianotasi
+
+@Entity : anotasi ini berfungsi untuk memberi tanda bahwa suatu kelas dapat dipetakan 
+ke suatu tabel
+
+@Table : anotasi ini memiliki fungsi untuk memungkinkan kita untuk menentukan detail
+yang akan dimiliki entitas/digunakan dalam database; seperti nama tabel, katalog, schema, 
+dan memberikan unique constraints
+
+
+2. Pada class BioskopDB, terdapat method findByNoBioskop, apakah kegunaan dari method
+tersebut?
+
+=> Kegunaan dari method findByNoBioskop adalah meng-query data dari repository BioskopDB
+yang memiliki suatu noBioskop yang spesifik dan mengembalikannya dalam bentuk
+objek BioskopModel
+
+3. Jelaskan perbedaan kegunaan dari anotasi @JoinTable dan @JoinColumn
+
+@JoinTable : Sepemahamanku anotasi ini seperti salah satu metode pemetaan diagram ER
+ke Model Relasional, yaitu cross-reference atau relationship relation. Di mana, 
+metode pemetaan ini akan membentuk suatu tabel/relasi baru dari 2 tabel yang saling berelasi.
+Dalam hal ini anotasi menggabungkan primary key dari kedua class/tabel yang berelasi 
+dalam suatu tabel/relasi baru.
+
+@JoinColumn : Sedangkan anotasi ini yang akan mengambil primary key tersebut 
+dan mendefinisikan kolom mana yang akan menjadi rujukan dari foreign key dan dari 
+tabel entitas yang mana.
+
+
+4. Pada class PenjagaModel, digunakan anotasi @JoinColumn pada atribut bioskop, apa
+kegunaan dari name, referencedColumnName, dan nullable dalam anotasi tersebut? dan apa
+perbedaan nullable dan penggunaan anotasi @NotNull
+
+parameter pada anotasi @JoinColumn di class PenjagaModel memiliki kegunaan sebagai berikut:
+
+name: mendefinisikan nama column yang akan digunakan foreign key pada tabel entitas tersebut
+dalam hal ini foreign key bioskop akan memiliki nama kolom no_bioskop pada tabel entitas PenjagaModel
+
+referencedColumnName: mendefinisikan nama kolom yang akan menjadi referenced bagi foreign key
+
+nullable: mendefinisikan not null constraints pada tabel
+
+perbedaan nullable dan @NotNull: mereka berdua sama-sama mencegah penyimpanan 
+null values pada basisdata di bawahnya. Perbedaannya adalah @NotNull menjalankan 
+pengecekan nilai pada atribut sebelum melakukan query SQL, sehingga apabila atribut diketahui
+bernilai null, Hibernate tidak akan menjalankan pemanggilan SQL. Sedangkan nullable akan
+menjalankan pengecekan setelah mengeksekusi SQL dan membiarkan database yang melakukan
+validasi, sehingga apabila ternyata atribut bernilai null, SQL statement akan gagal.
+
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+
+FetchType.LAZY: adalah sebuah method untuk mengambil data secara on-demand pada data 
+yang sangat besar. Jadi instead of mengambil semua field yang ada kita akan menggunakan 
+method get untuk mengambil field yang kita butuhkan saja.
+
+CascadeType.ALL: cascade adalah suatu cara mengaplikasikan tindakan yang dikenakan pada suatu entity
+kepada entity lain yang dependent terhadapnya. JPA CascadeType memiliki beberapa mode salah satunya 
+mode ALL. Mode ALL berfungsi untuk mengaplikasikan tindakan apapun yang dikenakan pada entity parent 
+ke entity childrennya. 
+
+FetchType.EAGER: kebalikan dari LAZY, EAGER akan me-load semua data sekaligus. Biasanya untuk 
+relasi one-to-one.
+
+### What I did not understand
+(tuliskan apa saja yang kurang Anda mengerti, Anda dapat men-_check_ apabila Anda
+sudah mengerti dikemudian hari, dan tambahkan tulisan yang membuat Anda mengerti)
+Quite much actually
+- [ ] Ada sangat banyak file dan annotation astaghfirullah
+- [ ] Belum begitu paham annotation Qualifier dan Transactional
+- [ ] Belum begitu paham bedanya annotation RequestMapping dan GetMapping
+
+Source:
+https://stackoverflow.com/questions/29332907/what-is-the-exact-meaning-of-the-jpa-entity-annotation#:~:text=%40Entity%20annotation%20defines%20that%20a,like%20for%20example%20Serializable%20interface.
+https://thorben-janssen.com/hibernate-tips-whats-the-difference-between-column-nullable-false-and-notnull/
+https://www.baeldung.com/jpa-cascade-types
+
 ---
 ## Tutorial 2
 ### What I have learned today

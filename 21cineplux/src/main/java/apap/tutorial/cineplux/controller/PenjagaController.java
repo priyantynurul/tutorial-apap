@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalTime;
+
 @Controller
 public class PenjagaController {
+
     @Qualifier("penjagaServiceImpl")
     @Autowired
     PenjagaService penjagaService;
@@ -45,42 +48,46 @@ public class PenjagaController {
 
     @GetMapping("/penjaga/update/{noPenjaga}")
     public String updatePenjagaForm(@PathVariable Long noPenjaga, Model model){
-        //Mendapatkan penjaga sesuai dengan noPenjaga
         PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
-
-        //Add variable BioskopModel ke 'bioskop' untuk dirender dalam thymeleaf
-        model.addAttribute("penjaga", penjaga);
-        model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
-
-        if(bioskopService.isOpen(penjaga.getBioskop())){ return "update-denied"; }
-        else{return "form-update-penjaga";}
-    }
-
-    @PostMapping("/penjaga/update/{noPenjaga}")
-    public String updatePenjagaSubmit(@ModelAttribute PenjagaModel penjaga, Model model){
-        //Mendapatkan bioskop sesuai dengan noBioskop
-        penjagaService.updatePenjaga(penjaga);
-
-        //Add variable BioskopModel ke 'bioskop' untuk dirender dalam thymeleaf
-        model.addAttribute("penjaga", penjaga);
-        model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
-
-        return "update-penjaga";
-    }
-
-    @GetMapping("/penjaga/delete/{noPenjaga}")
-    public String deletePenjaga(@PathVariable Long noPenjaga, Model model){
-        //Mendapatkan penjaga sesuai dengan noPenjaga
-        PenjagaModel penjaga = penjagaService.getPenjagaByNoPenjaga(noPenjaga);
-
-        model.addAttribute("noPenjaga", penjaga.getNoPenjaga());
-        model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
-
-        if(bioskopService.isOpen(penjaga.getBioskop())){
-            return "delete-penjaga-denied";
+        if (penjaga == null){
+            return "error-notfound";
         }
+        model.addAttribute("penjaga", penjaga);
+        return "form-update-penjaga";
+    }
 
-        penjagaService.deletePenjaga(penjaga);
-        return "delete-penjaga-success";
+//    TODO: kasih handler yang cuman bisa kalo tutup
+    @PostMapping("/penjaga/update")
+    public String updatePenjagaSubmit(
+            @ModelAttribute PenjagaModel penjaga,
+            Model model
+    ){
+        LocalTime now = LocalTime.now();
+        BioskopModel bioskop = penjaga.getBioskop();
+        if (now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup())){
+            penjagaService.updatePenjaga(penjaga);
+            model.addAttribute("namaPenjaga", penjaga.getNamaPenjaga());
+            model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
+            return "update-penjaga";
+        }
+        return "error-notfound";
+    }
+
+
+    @PostMapping("/penjaga/delete")
+    public String deletePenjagaSubmit(
+        @ModelAttribute BioskopModel bioskop,
+        Model model
+    ){
+        model.addAttribute("noBioskop", bioskop.getNoBioskop());
+        int res = 1;
+        for (PenjagaModel penjaga:
+             bioskop.getListPenjaga()) {
+            res = penjagaService.deletePenjaga(penjaga);
+        }
+        if (res == 1){
+            return "delete-penjaga";
+        }
+        return "error-notfound";
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -65,6 +66,20 @@ public class PenjagaRestController {
         return penjagaRestService.retrieveListPenjaga();
     }
 
+    @GetMapping(value = "/list-penjaga/{jenisKelamin}")
+    private List<PenjagaModel> retrievePenjagaByGender(@PathVariable("jenisKelamin") Integer jenisKelamin) {
+        List<PenjagaModel> listPenjaga = penjagaRestService.retrieveListPenjaga();
+
+        List<PenjagaModel> filtered = new ArrayList();
+        for(PenjagaModel penjaga : listPenjaga){
+            if(penjaga.getJenisKelamin()==jenisKelamin){
+                filtered.add(penjaga);
+            }
+        }
+
+        return filtered;
+    }
+
     @DeleteMapping(value = "/penjaga/{noPenjaga}")
     private ResponseEntity deletePenjaga(@PathVariable("noPenjaga") Long noPenjaga){
         try{
@@ -86,12 +101,13 @@ public class PenjagaRestController {
             System.out.println(penjagaRestService.getUmur(noPenjaga));
 
             String[] umur1 = penjagaRestService.getUmur(noPenjaga).split(",");
-            for(String i : umur1){
-                System.out.println(i);
-            }
-            Integer umur2 = Integer.valueOf(umur1[3].split(":")[1]);
+
+            String umur2 = umur1[1];
+
             System.out.println(umur2);
-            penjaga.setUmur(umur2);
+            Integer umur3 = Integer.valueOf(umur2.split(":")[1]);
+            System.out.println(umur3);
+            penjaga.setUmur(umur3);
             return penjaga;
         } catch (NoSuchElementException e) {
             throw new ResponseStatusException(

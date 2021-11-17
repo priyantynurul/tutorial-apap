@@ -2,6 +2,21 @@
 ## Authors
 * **Priyanty Nurul Fatimah** - *1906353681* - *C*
 
+## Tutorial 6
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+Otentikasi untuk memastikan orang ini benar2 terdaftar.
+Otorisasi untuk memastikan dia punya kewenangan untuk memakai fitur
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+Dia adalah fitur untuk mengencripsi dan mendekripsi password.
+
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa
+demikian?
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut
+Agar dapat mengambil role dari user
+
 ## Tutorial 5
 ### What I have learned today
 1. Apa itu Postman? Apa kegunaannya?

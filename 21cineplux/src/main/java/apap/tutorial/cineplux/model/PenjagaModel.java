@@ -35,11 +35,13 @@ public class PenjagaModel implements Serializable {
     @Column(nullable = false)
     private Integer jenisKelamin;
 
-    private Integer umur;
+    @Column(name = "umur")
+    private String umur;
 
     //Relasi dengan BioskopModel
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "no_bioskop", referencedColumnName = "noBioskop", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private BioskopModel bioskop;
+
 }

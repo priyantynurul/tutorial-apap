@@ -1,6 +1,6 @@
 package apap.tutorial.cineplux.rest;
 
 public class Setting {
-    final public static String bioskopurl = "https://44128bb8-749b-42cd-91b8-c3f58443416c.mock.pstmn.io";
-    final public static String umururl = "https://api.agify.io";
+    final public static String bioskopUrl = "https://df76b4c1-765a-44dd-a395-46328c3362f4.mock.pstmn.io";
+    final public static String prediksiUmur = "https://api.agify.io";
 }

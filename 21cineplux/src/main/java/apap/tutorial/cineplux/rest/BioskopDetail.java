@@ -10,8 +10,6 @@ import java.util.Date;
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BioskopDetail {
-
-    @JsonProperty("status")
     private String status;
 
     @JsonProperty("bioskop-license")

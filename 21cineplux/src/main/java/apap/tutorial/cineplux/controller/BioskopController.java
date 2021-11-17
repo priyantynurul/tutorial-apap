@@ -7,6 +7,8 @@ import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -103,7 +105,11 @@ public class BioskopController {
             Model model) {
         BioskopModel bioskop = bioskopService.getBioskopByNoBioskop(noBioskop);
         List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String role = auth.getAuthorities().toString().replace("[", "").replace("]","");
+        System.out.println("rolenya "+role);
 
+        model.addAttribute("role", role);
         model.addAttribute("bioskop", bioskop);
         model.addAttribute("listFilm", bioskop.getListFilm());
         model.addAttribute("listPenjaga", listPenjaga);

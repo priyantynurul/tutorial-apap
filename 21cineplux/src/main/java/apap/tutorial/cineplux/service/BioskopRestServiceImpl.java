@@ -41,7 +41,7 @@ public class BioskopRestServiceImpl implements BioskopRestService{
 
         if(bioskop.isPresent()){
             return bioskop.get();
-        }else{
+        }else {
             throw new NoSuchElementException();
         }
     }
@@ -63,7 +63,8 @@ public class BioskopRestServiceImpl implements BioskopRestService{
         LocalTime now = LocalTime.now();
         BioskopModel bioskop = getBioskopByNoBioskop(noBioskop);
 
-        if((now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup())) && bioskop.getListPenjaga().isEmpty()){
+        if((now.isBefore(bioskop.getWaktuBuka()) || now.isAfter(bioskop.getWaktuTutup()))
+                && bioskop.getListPenjaga().isEmpty()){
             bioskopDB.delete(bioskop);
         }else{
             throw new UnsupportedOperationException("Bioskop still open!");
@@ -71,22 +72,22 @@ public class BioskopRestServiceImpl implements BioskopRestService{
     }
 
     public BioskopRestServiceImpl(WebClient.Builder webClientBuilder){
-        this.webClient = webClientBuilder.baseUrl(Setting.bioskopurl).build();
+        this.webClient = webClientBuilder.baseUrl(Setting.bioskopUrl).build();
     }
 
     @Override
-    public Mono<String> getStatus(Long noBioskop) {
+    public Mono<String> getStatus(Long noBioskop){
         return this.webClient.get().uri("/rest/bioskop/" + noBioskop + "/status")
                 .retrieve()
                 .bodyToMono(String.class);
     }
 
     @Override
-    public Mono<BioskopDetail> postStatus() {
+    public Mono<BioskopDetail> postStatus(){
         MultiValueMap<String, String> data = new LinkedMultiValueMap<>();
         data.add("namaBioskop", "Bioskop Mock Server");
         data.add("alamatBioskop", "Depok");
-
+        System.out.println("masuk");
         return this.webClient.post().uri("/rest/bioskop/full")
                 .syncBody(data)
                 .retrieve()

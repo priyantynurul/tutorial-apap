@@ -36,12 +36,35 @@ function App() {
         const newItems = [...cartItems];
         const newItem = { ...item };
         const targetInd = newItems.findIndex((it) => it.id === newItem.id);
-        
-        if (targetInd < 0) {
+        const currBalance = balance;
+        const itemPrice = item.price;
+        const bal = currBalance - itemPrice;
+
+        if (targetInd < 0 && bal > 0) {
             newItem.inCart = true;
             newItems.push(newItem);
-            updateShopItem(newItem, true)
+            updateShopItem(newItem, true);
+            setBalance(bal);
+            setCartItems(newItems);
+        } else if (bal < 0) {
+            alert("Balance not sufficient!");
         }
+    }
+
+    function handleDeleteItemFromCart(item){
+        const newItems = [...cartItems];
+        const newItem = { ...item };
+        const targetInd = newItems.findIndex((it) => it.id === newItem.id);
+        const currBalance = balance;
+        const itemPrice = item.price;
+        const bal = currBalance + itemPrice;
+
+        if (targetInd >= 0) {
+            newItem.inCart = false;
+            newItems.splice(newItem);
+            updateShopItem(newItem, false)
+        }
+        setBalance(bal);
         setCartItems(newItems);
     }
 
@@ -70,7 +93,7 @@ function App() {
                             <List
                                 title="My Cart"
                                 items={cartItems}
-                                onItemClick={() => {}}
+                                onItemClick={handleDeleteItemFromCart}
                             ></List>
                         </div>
                     ) : <div className="col-sm">

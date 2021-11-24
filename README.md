@@ -13,12 +13,16 @@ memberikan arahan pada sistem untuk menghapus item dari List cart apabila
 tombol trash ditekan. Hal itu pula yang menyebabkan saya harus menambahkan 
 atribut handleDeleteItemFromCart untuk menjadi props yang di-oper ke List MyCart.
 
+<img width="437" alt="image" src="https://user-images.githubusercontent.com/90324988/143278458-a3091d26-7ce9-4cb6-918b-d95562f3ab60.png">
+<img width="325" alt="image" src="https://user-images.githubusercontent.com/90324988/143278494-2dfaaa95-8ff9-492d-8bea-d756f0a750fb.png">
 
 
 **Functional Based**
 Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
 berbeda karena pada functional based sudah menggunakan useState.
 
+<img width="442" alt="image" src="https://user-images.githubusercontent.com/90324988/143277800-4b9739de-324c-4d2b-aa12-0808d9ceb00d.png">
+<img width="289" alt="image" src="https://user-images.githubusercontent.com/90324988/143277856-7fc8d6cf-f73a-4ad5-9593-7d8517a9ec65.png">
 
 
 Nomor 2
@@ -29,12 +33,17 @@ saldo bertambah kembali sesuai dengan harga item. Sedangkan pada atribut add
 tiap kali item ditambah ke My Cart, maka saldo berkurang sesuai dengan 
 harga item. Kemudian akan diset balance-nya.
 
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/90324988/143278262-fee4d5df-69fd-44ac-9593-422f726e7c4e.png">
+<img width="463" alt="image" src="https://user-images.githubusercontent.com/90324988/143278350-d7f95077-04e9-41b3-98fe-a0d1d34869db.png">
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/90324988/143278400-fe6ead19-6c56-4b7f-a3c7-150a75bfef3c.png">
 
 
 **Functional Based**
 Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
 berbeda karena pada functional based sudah menggunakan useState.
 
+<img width="461" alt="image" src="https://user-images.githubusercontent.com/90324988/143277952-023aee20-b694-4b58-bf38-303ee9be3b95.png">
+<img width="443" alt="image" src="https://user-images.githubusercontent.com/90324988/143278006-f28c28f9-c9f0-4572-ada1-7d47b3fc3ac7.png">
 
 
 Nomor 3
@@ -43,13 +52,14 @@ Saya menambahkan fungsi untuk mengeluarkan alert pada atribut handleAddItemToCar
 sehingga apabila hasil kalkulasi < 0 maka add item tidak dapat dilakukan dan 
 akan muncul alert.
 
-
+<img width="295" alt="image" src="https://user-images.githubusercontent.com/90324988/143278150-f2083255-9cfd-40bb-9ff0-48722c9a2d0b.png">
 
 
 **Functional Based**
 Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
 berbeda karena pada functional based sudah menggunakan useState.
 
+<img width="281" alt="image" src="https://user-images.githubusercontent.com/90324988/143278088-030fbd83-4102-425b-b2af-5afbfbf69804.png">
 
 
 

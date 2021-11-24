@@ -2,11 +2,13 @@ package apap.tutorial.cineplux.controller;
 
 import apap.tutorial.cineplux.model.UserModel;
 import apap.tutorial.cineplux.model.RoleModel;
+import apap.tutorial.cineplux.repository.UserDB;
 import apap.tutorial.cineplux.service.RoleService;
 import apap.tutorial.cineplux.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,9 @@ public class UserController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private UserDB userDB;
 
     @GetMapping("/add")
     private String addUserFormPage(Model model){
@@ -68,5 +73,24 @@ public class UserController {
         userService.deleteUser(user);
         model.addAttribute("user", user);
         return "delete-user";
+    }
+
+    @GetMapping("/ubah-password")
+    public String ubahPasswordForm() {
+        return "form-ubah-password";
+    }
+
+    @PostMapping("/ubah-password")
+    public String ubahPasswordSubmit(
+            @RequestParam("passwordLama") String passwordLama,
+            @RequestParam("passwordBaru") String passwordBaru,
+            @RequestParam("passwordKonfirmasi") String passwordKonfirmasi,
+            Model model
+    ){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserModel user = userDB.findByUsername(auth.getName());
+        String response = userService.updatePassword(user,passwordLama,passwordBaru,passwordKonfirmasi);
+        model.addAttribute("response", response);
+        return "ubah-password";
     }
 }

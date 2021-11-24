@@ -48,4 +48,27 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(UserModel user) {
         userDB.delete(user);
     }
+
+    @Override
+    public UserModel getUserByUsername(String username){
+        UserModel user = userDB.findByUsername(username);
+        return user;
+    }
+
+    @Override
+    public String updatePassword(UserModel user, String lama, String baru, String konfirmasi){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        boolean isMatch = passwordEncoder.matches(lama, user.getPassword());
+        if (isMatch && baru.equals(konfirmasi)){
+            user.setPassword(passwordEncoder.encode(baru));
+            userDB.save(user);
+            return "Password berhasil diubah";
+        } else if (isMatch == false){
+            return "Password lama anda tidak sesuai";
+        } else if (baru.equals(konfirmasi) == false){
+            return "Password konfirmasi anda tidak sesuai dengan password baru";
+        } else {
+            return "";
+        }
+    }
 }

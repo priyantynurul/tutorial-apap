@@ -10,4 +10,6 @@ public interface UserService {
     void deleteUser(UserModel user);
     List<UserModel> getUserList();
     UserModel getUserByNoUser(Long noUser);
+    UserModel getUserByUsername(String username);
+    String updatePassword(UserModel user, String passwordLama, String passwordBaru, String passwordKonfirmasi);
 }

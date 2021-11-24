@@ -2,6 +2,83 @@
 ## Authors
 * **Priyanty Nurul Fatimah** - *1906353681* - *C*
 
+## Tutorial 7
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
+sebagai ilustrasi dari apa yang Anda jelaskan.
+
+Nomor 1
+**Class Based**
+Saya menambahkan handler handleDeleteItemFromCart untuk 
+memberikan arahan pada sistem untuk menghapus item dari List cart apabila 
+tombol trash ditekan. Hal itu pula yang menyebabkan saya harus menambahkan 
+atribut handleDeleteItemFromCart untuk menjadi props yang di-oper ke List MyCart.
+
+
+
+**Functional Based**
+Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
+berbeda karena pada functional based sudah menggunakan useState.
+
+
+
+Nomor 2
+**Class Based**
+Saya melakukan kalkulasi pada atribut handleDeleteItemFromCart dan atribut 
+handleAddItemToCart. Di mana pada atribut delete tiap kali item dihapus dari My Cart, maka
+saldo bertambah kembali sesuai dengan harga item. Sedangkan pada atribut add 
+tiap kali item ditambah ke My Cart, maka saldo berkurang sesuai dengan 
+harga item. Kemudian akan diset balance-nya.
+
+
+
+**Functional Based**
+Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
+berbeda karena pada functional based sudah menggunakan useState.
+
+
+
+Nomor 3
+**Class Base**
+Saya menambahkan fungsi untuk mengeluarkan alert pada atribut handleAddItemToCart 
+sehingga apabila hasil kalkulasi < 0 maka add item tidak dapat dilakukan dan 
+akan muncul alert.
+
+
+
+
+**Functional Based**
+Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
+berbeda karena pada functional based sudah menggunakan useState.
+
+
+
+
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan
+props?
+
+State adalah atribut yang akan dijadikan patokan untuk trigger suatu event.
+Props adalah atribut yang bisa dipass.
+
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam
+React? sebutkan alasannya.
+
+Kita sebaiknya menggunakan component agar kita dapat me-reuse UI object
+
+4. Apa perbedaan class component dan functional component?
+
+Class component merupakan code berbasis class.
+Functional component merupakan code yang berbasis fungsi. Memungkinkan menggunakan 
+state dan fitur React lainnya tanpa perlu menulis sebuah class baru. Functional 
+component dilengkapi dengan useState sehingga bisa langsung mengubah atribut state 
+dengan cara setStateAttributeName(value).
+
+5. Dalam react, apakah perbedaan component dan element?
+
+Component adalah fungsi atau kelas yang dapat menerima dan mengembalikan input 
+berupa element.
+
+Element adalah objek yang tidak dapat diubah atau diterapkan metode terhadapnya.
+
 ## Tutorial 6
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
 yang telah anda buat) konsep tersebut diimplementasi?

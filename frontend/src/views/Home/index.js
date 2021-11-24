@@ -18,15 +18,40 @@ export default class Home extends React.Component {
             balance: 120,
         };
     }
+
     handleAddItemToCart = (item) => {
         const newItems = [...this.state.cartItems]
         const newItem = {...item};
         const targetInd = newItems.findIndex((it) => it.id === newItem.id);
-        if (targetInd < 0) {
+        const currBalance = this.state.balance;
+        const itemPrice = item.price;
+        const bal = currBalance - itemPrice;
+
+        if (targetInd < 0 && bal > 0) {
             newItem.inCart = true;
             newItems.push(newItem);
             this.updateShopItem(newItem, true)
+            this.setState({balance: bal});
+            this.setState({cartItems: newItems});
+        } else if (bal < 0) {
+            alert("Balance not sufficient!");
         }
+    };
+
+    handleDeleteItemFromCart = (item) => {
+        const newItems = [...this.state.cartItems]
+        const newItem = {...item};
+        const targetInd = newItems.findIndex((it) => it.id === newItem.id);
+        const currBalance = this.state.balance;
+        const itemPrice = item.price;
+        const bal = currBalance + itemPrice;
+
+        if (targetInd >= 0) {
+            newItem.inCart = false;
+            newItems.splice(newItem, 1);
+            this.updateShopItem(newItem, false)
+        }
+        this.setState({balance: bal});
         this.setState({cartItems: newItems});
     };
 
@@ -46,7 +71,7 @@ export default class Home extends React.Component {
         return(
             <div className="container-fluid">
                 <h1 className="text-center mt-3 mb-0">Mini Commerce</h1>
-                <div style={{position:'fixed', top:25,right:25}}>
+                <div style={{position:'fixed', top:25, right:25}}>
                     <Fab variant="extended" onClick={this.handleToggle}>
                         {this.state.cartHidden ?
                         <Badge color="secondary" badgeContent={this.state.cartItems.length}>
@@ -67,7 +92,7 @@ export default class Home extends React.Component {
                                 <List
                                     title="My Cart"
                                     items={this.state.cartItems}
-                                    onItemClick={() => {}}>
+                                    onItemClick={this.handleDeleteItemFromCart}>
                                 </List>
                             </div>
                         ): <div className="col-sm">

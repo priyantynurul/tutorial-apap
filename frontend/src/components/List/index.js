@@ -1,7 +1,7 @@
-import react from "react";
+import React from "react";
 import Item from "../Item/index.js";
 
-export default function list({title, items, onItemClick, isShopList}) {
+export default function List({title, items, onItemClick, isShopList}) {
     return(
         <>
         <h3 style={StyleSheet.heading}>{title}</h3>

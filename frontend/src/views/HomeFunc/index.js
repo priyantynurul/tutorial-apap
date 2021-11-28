@@ -61,7 +61,7 @@ function App() {
 
         if (targetInd >= 0) {
             newItem.inCart = false;
-            newItems.splice(newItem);
+            newItems.splice(newItem, 1);
             updateShopItem(newItem, false)
         }
         setBalance(bal);

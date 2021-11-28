@@ -6,6 +6,8 @@ import { Badge } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import {IconButton} from "@material-ui/core";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 
 export default class Home extends React.Component {
@@ -55,6 +57,23 @@ export default class Home extends React.Component {
         this.setState({cartItems: newItems});
     };
 
+    handleDeleteAllItemFromCart = (item) => {
+        const newItems = [...this.state.cartItems]
+        const newItem = {...item};
+        const targetInd = newItems.findIndex((it) => it.id === newItem.id);
+        const currBalance = this.state.balance;
+        const itemPrice = item.price;
+        const bal = currBalance + itemPrice;
+
+        if (targetInd >= 0) {
+            newItem.inCart = false;
+            newItems.splice(newItem);
+            this.updateShopItem(newItem, false)
+        }
+        this.setState({balance: bal});
+        this.setState({cartItems: newItems});
+    };
+
     updateShopItem = (item, inCart) => {
         const tempShopItems = this.state.shopItems;
         const targetInd = tempShopItems.findIndex((it) => it.id === item.id);
@@ -89,6 +108,9 @@ export default class Home extends React.Component {
                     <div className="row mt-3">
                         {!this.state.cartHidden ? (
                             <div className="col-sm">
+                                <IconButton onClick={this.handleDeleteAllItemFromCart}>
+                                    <DeleteIcon/>
+                                </IconButton>
                                 <List
                                     title="My Cart"
                                     items={this.state.cartItems}

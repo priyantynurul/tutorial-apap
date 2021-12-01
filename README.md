@@ -2,6 +2,93 @@
 ## Authors
 * **Priyanty Nurul Fatimah** - *1906353681* - *C*
 
+## Tutorial 7
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
+sebagai ilustrasi dari apa yang Anda jelaskan.
+
+Nomor 1
+**Class Based**
+Saya menambahkan handler handleDeleteItemFromCart untuk 
+memberikan arahan pada sistem untuk menghapus item dari List cart apabila 
+tombol trash ditekan. Hal itu pula yang menyebabkan saya harus menambahkan 
+atribut handleDeleteItemFromCart untuk menjadi props yang di-oper ke List MyCart.
+
+<img width="437" alt="image" src="https://user-images.githubusercontent.com/90324988/143278458-a3091d26-7ce9-4cb6-918b-d95562f3ab60.png">
+<img width="325" alt="image" src="https://user-images.githubusercontent.com/90324988/143278494-2dfaaa95-8ff9-492d-8bea-d756f0a750fb.png">
+
+
+**Functional Based**
+Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
+berbeda karena pada functional based sudah menggunakan useState.
+
+<img width="442" alt="image" src="https://user-images.githubusercontent.com/90324988/143277800-4b9739de-324c-4d2b-aa12-0808d9ceb00d.png">
+<img width="289" alt="image" src="https://user-images.githubusercontent.com/90324988/143277856-7fc8d6cf-f73a-4ad5-9593-7d8517a9ec65.png">
+
+
+Nomor 2
+**Class Based**
+Saya melakukan kalkulasi pada atribut handleDeleteItemFromCart dan atribut 
+handleAddItemToCart. Di mana pada atribut delete tiap kali item dihapus dari My Cart, maka
+saldo bertambah kembali sesuai dengan harga item. Sedangkan pada atribut add 
+tiap kali item ditambah ke My Cart, maka saldo berkurang sesuai dengan 
+harga item. Kemudian akan diset balance-nya.
+
+<img width="452" alt="image" src="https://user-images.githubusercontent.com/90324988/143278262-fee4d5df-69fd-44ac-9593-422f726e7c4e.png">
+<img width="463" alt="image" src="https://user-images.githubusercontent.com/90324988/143278350-d7f95077-04e9-41b3-98fe-a0d1d34869db.png">
+<img width="416" alt="image" src="https://user-images.githubusercontent.com/90324988/143278400-fe6ead19-6c56-4b7f-a3c7-150a75bfef3c.png">
+
+
+**Functional Based**
+Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
+berbeda karena pada functional based sudah menggunakan useState.
+
+<img width="461" alt="image" src="https://user-images.githubusercontent.com/90324988/143277952-023aee20-b694-4b58-bf38-303ee9be3b95.png">
+<img width="443" alt="image" src="https://user-images.githubusercontent.com/90324988/143278006-f28c28f9-c9f0-4572-ada1-7d47b3fc3ac7.png">
+
+
+Nomor 3
+**Class Base**
+Saya menambahkan fungsi untuk mengeluarkan alert pada atribut handleAddItemToCart 
+sehingga apabila hasil kalkulasi < 0 maka add item tidak dapat dilakukan dan 
+akan muncul alert.
+
+<img width="295" alt="image" src="https://user-images.githubusercontent.com/90324988/143278150-f2083255-9cfd-40bb-9ff0-48722c9a2d0b.png">
+
+
+**Functional Based**
+Saya melakukan hal yang sama dengan class based, hanya saja implementasi codenya 
+berbeda karena pada functional based sudah menggunakan useState.
+
+<img width="281" alt="image" src="https://user-images.githubusercontent.com/90324988/143278088-030fbd83-4102-425b-b2af-5afbfbf69804.png">
+
+
+
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan
+props?
+
+State adalah atribut yang akan dijadikan patokan untuk trigger suatu event.
+Props adalah atribut yang bisa dipass.
+
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam
+React? sebutkan alasannya.
+
+Kita sebaiknya menggunakan component agar kita dapat me-reuse UI object
+
+4. Apa perbedaan class component dan functional component?
+
+Class component merupakan code berbasis class.
+Functional component merupakan code yang berbasis fungsi. Memungkinkan menggunakan 
+state dan fitur React lainnya tanpa perlu menulis sebuah class baru. Functional 
+component dilengkapi dengan useState sehingga bisa langsung mengubah atribut state 
+dengan cara setStateAttributeName(value).
+
+5. Dalam react, apakah perbedaan component dan element?
+
+Component adalah fungsi atau kelas yang dapat menerima dan mengembalikan input 
+berupa element.
+
+Element adalah objek yang tidak dapat diubah atau diterapkan metode terhadapnya.
+
 ## Tutorial 6
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
 yang telah anda buat) konsep tersebut diimplementasi?

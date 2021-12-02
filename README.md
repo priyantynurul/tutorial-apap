@@ -2,6 +2,82 @@
 ## Authors
 * **Priyanty Nurul Fatimah** - *1906353681* - *C*
 
+## Tutorial 8
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian
+melakukan langkah - langkah tersebut?
+
+Langkahnya adalah dengan me-reset state di dalam fungsi handleSubmitItem(). Karena handle submit item adalah 
+fungsi untuk mensubmit form tambah item dan setState adalah fungsi untuk menetapkan state objek pada sesi 
+tersebut. Sehingga digunakan setState dengan value default pada fungsi handleSubmitItem().
+
+![image](https://user-images.githubusercontent.com/90324988/144417133-70a9016f-2ff1-4634-b024-b0b4d9d3b3d3.png)
+
+2. Jelaskan fungsi dari async dan await!
+
+Async — await adalah salah satu fitur baru dari javascript yang di gunakan untuk menangani hasil dari sebuah promise.
+Caranya adalah dengan menambahkan kata ‘async’ di depan sebuah fungsi untuk mengubahnya menjadi asynchronous.
+Sedangkan await berfungsi untuk menunda sebuah kode di jalankan, sampai proses asynchronous berhasil.
+
+3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle
+pada pertanyaan ini.
+
+Step 1
+![image](https://user-images.githubusercontent.com/90324988/144417504-3d1ac9eb-d409-471a-81af-e804549c9bc9.png)
+![image](https://user-images.githubusercontent.com/90324988/144417527-df6f01e4-1247-469d-bdd7-ec20496028d4.png)
+![image](https://user-images.githubusercontent.com/90324988/144417550-cde4ae28-0d1b-4b62-9917-1ae251ad8adb.png)
+
+Step 2
+![image](https://user-images.githubusercontent.com/90324988/144417588-1947f0f8-4c7e-4d2d-9a0f-3261a8384a9d.png)
+
+Step 3
+![image](https://user-images.githubusercontent.com/90324988/144417665-ce8a9ff3-5c8e-4a52-a82d-0eb2e9d180bf.png)
+
+Step 6
+![image](https://user-images.githubusercontent.com/90324988/144417700-a5c65f6f-7325-44f5-9e6f-8fc2e5e56eee.png)
+
+Step 7
+a.
+![image](https://user-images.githubusercontent.com/90324988/144417782-2ed0624e-ee4f-4c4b-bb67-e55b103253ce.png)
+
+b.
+![image](https://user-images.githubusercontent.com/90324988/144417809-047bf99e-d869-4e3c-89c7-71764e178413.png)
+
+c.
+![image](https://user-images.githubusercontent.com/90324988/144417837-76b1d7ef-c024-457f-96af-d822e18559f1.png)
+
+Step 8
+![image](https://user-images.githubusercontent.com/90324988/144417931-43688352-1d34-40ba-96ac-8b0afc66cf21.png)
+
+Step 9
+![image](https://user-images.githubusercontent.com/90324988/144417955-fc63638c-c348-4ec2-84c9-1fbb9a68960e.png)
+
+Step 9 Additional
+![image](https://user-images.githubusercontent.com/90324988/144418002-9d962c86-1ee5-4e7f-9a5b-fc23e3cc34cd.png)
+![image](https://user-images.githubusercontent.com/90324988/144418037-7cccdda2-ebc8-4945-9272-eb52986584d1.png)
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate,
+componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja
+yang biasanya menggunakan lifecycle method tersebut”.
+
+componentDidMount: dipanggil pada fase mounting, fungsinya untuk memanipulasi DOM dan request data.
+
+shouldComponentUpdate : dipanggil pada fase updating, tugasnya adalah untuk menentukan apakah sebuah component 
+akan di render ulang atau tidak. Method ini akan mengembalikan nilai boolean true & false, jika true maka 
+component akan di render ulang atau sebaliknya.
+
+componentDidUpdate : dipanggil pada fase updating, fungsinya sama dengan componentDidMount yaitu untuk manipulasi 
+DOM dan request data.
+
+componentWillReceiveProps : dipanggil pada fase updating, fungsi ini akan di eksekusi apabila state yang ada di 
+component akan di update atau di ubah dengan nilai props yang baru.
+
+componentWillUnmount: dipanggil pada fase unmounting, yang di jalankan sebelum sebuah component di hapus dari DOM
+
+Source:
+https://medium.com/codeacademia/apa-itu-component-lifecycle-di-react-bfcb64f64e0e
+
+
 ## Tutorial 7
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
 sebagai ilustrasi dari apa yang Anda jelaskan.

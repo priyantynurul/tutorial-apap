@@ -7,7 +7,7 @@ import Modal from "../../components/modal";
 import { Badge } from '@mui/material';
 import Fab from '@mui/material/Fab';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import ViewStreamIcon from '@mui/icons-material/ViewStream';
+import { Link } from "react-router-dom";
 
 class ItemList extends Component {
     constructor(props) {
@@ -23,11 +23,13 @@ class ItemList extends Component {
             description: "",
             category: "",
             quantity: 0,
+            //inCart: 0,
             textSearch: "",
             cartItems: [],
             cartHidden: true
         };
         this.handleAddItem = this.handleAddItem.bind(this);
+        this.handleAddToCart = this.handleAddToCart.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
         this.handleClickLoading = this.handleClickLoading.bind(this);
         this.handleChangeField = this.handleChangeField.bind(this);
@@ -52,8 +54,8 @@ class ItemList extends Component {
             price: item.price,
             description: item.description,
             category: item.category,
-            quantity: item.quantity
-        })
+            quantity: item.quantity,
+        });
     }
 
     handleCancel(event) {
@@ -104,7 +106,7 @@ class ItemList extends Component {
                 price: 0,
                 description: "",
                 category: "",
-                quantity: 0
+                quantity: 0,
             })
             this.loadData();
         } catch (error) {
@@ -141,6 +143,64 @@ class ItemList extends Component {
         this.handleCancel(event);
     }
 
+    async loadDataCart() {
+        try {
+            const { data } = await APIConfig.get("/cart");
+            this.setState({ cartItems: data.result });
+        } catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+    }
+
+    async handleAddToCart(event) {
+        const inputValue = document.getElementById("cartItem" + event.id).value;
+        const cartItems = [...this.state.cartItems];
+        try {
+            if (cartItems.length === 0) {
+                if (inputValue <= event.quantity) {
+                    const data = {
+                        quantity: inputValue,
+                        idItem: event.id,
+                    };
+                    await APIConfig.post("/cart", data);
+                    this.loadData();
+                    this.loadDataCart();
+                }
+            } else {
+                for (let i = 0; i < cartItems.length; i++) {
+                    const temp = cartItems[i];
+                    if (event.id === temp.item.id) {
+                        if (inputValue <= event.quantity - temp.quantity) {
+                            const data = {
+                                quantity: inputValue,
+                                idItem: event.id,
+                            };
+                            await APIConfig.post("/cart", data);
+                            this.loadData();
+                            this.loadDataCart();
+                        } else {
+                            alert("Insufficient stock");
+                        }
+                    } else {
+                        console.log("masuk else");
+                        if (inputValue <= event.quantity) {
+                            const data = {
+                                quantity: inputValue,
+                                idItem: event.id,
+                            };
+                            await APIConfig.post("/cart", data);
+                        }
+                    }
+                    alert("Oops maaf stok tidak cukup");
+                }
+            }
+        } catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+    }
+
     render() {
         return (
             <div className={classes.itemList}>
@@ -148,14 +208,13 @@ class ItemList extends Component {
                     All Items
                 </h1>
                 <div style={{position:'fixed', top:25, right:25}}>
-                    <Fab variant="extended" onClick={this.handleToggle}>
-                        {this.state.cartHidden ?
+                    <Link to="/cart">
+                        <Fab variant="extended">
                             <Badge color="secondary" badgeContent={this.state.cartItems.length}>
                                 <ShoppingCartIcon />
                             </Badge>
-                            : <ViewStreamIcon/>
-                        }
-                    </Fab>
+                        </Fab>
+                    </Link>
                 </div>
                 <input
                     className={classes.textField}
@@ -177,7 +236,9 @@ class ItemList extends Component {
                             price={item.price}
                             description={item.description}
                             category={item.category}
+                            quantity={item.quantity}
                             handleEdit={() => this.handleEditItem(item)}
+                            handleAddToCart={() => this.handleAddToCart(item)}
                         />
                     ))}
                 </div>

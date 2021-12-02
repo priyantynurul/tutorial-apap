@@ -76,7 +76,7 @@ componentWillUnmount: dipanggil pada fase unmounting, yang di jalankan sebelum s
 
 Source:
 https://medium.com/codeacademia/apa-itu-component-lifecycle-di-react-bfcb64f64e0e
-
+https://medium.com/codeacademia/belajar-callback-promise-dan-async-await-dalam-5-menit-fa1564956ab0
 
 ## Tutorial 7
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot
